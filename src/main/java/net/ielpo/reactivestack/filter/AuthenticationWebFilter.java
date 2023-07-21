@@ -18,6 +18,8 @@ import reactor.core.publisher.Mono;
 /**
  * @author Alberto Ielpo
  * @apiNote simple authentication web filter
+ *          TODO:
+ *          https://docs.spring.io/spring-security/reference/servlet/authorization/method-security.html#use-aspectj
  */
 @Component
 @Order(FilterOrder.AUTHENTICATION)

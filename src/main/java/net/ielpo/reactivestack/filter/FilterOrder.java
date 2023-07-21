@@ -14,6 +14,5 @@ public class FilterOrder {
 
     /** first 10 free.. */
     public final static int AUTHENTICATION = 10;
-    public final static int X_REACTIVE = 11;
 
 }
