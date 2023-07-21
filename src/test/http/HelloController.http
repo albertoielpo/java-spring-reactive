@@ -3,7 +3,7 @@
 @id = 2
 
 GET {{baseUrl}}/hello/{{id}}
-Accept: application/javascript
+Accept: text/plain
 Content-Type: application/json
 # user
 Authorization: Basic dXNlcjp1c2Vy
@@ -14,5 +14,5 @@ Authorization: Basic dXNlcjp1c2Vy
 # public controller - no auth nedeed
 ###
 GET {{baseUrl}}/public/{{id}}
-Accept: application/javascript
+Accept: text/plain
 Content-Type: application/json
