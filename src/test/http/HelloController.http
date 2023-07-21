@@ -5,4 +5,14 @@
 GET {{baseUrl}}/hello/{{id}}
 Accept: application/javascript
 Content-Type: application/json
+# user
 Authorization: Basic dXNlcjp1c2Vy
+# admin
+# Authorization: Basic YWRtaW46YWRtaW4=
+
+###
+# public controller - no auth nedeed
+###
+GET {{baseUrl}}/public/{{id}}
+Accept: application/javascript
+Content-Type: application/json
