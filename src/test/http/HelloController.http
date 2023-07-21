@@ -1,0 +1,8 @@
+#
+@baseUrl=http://localhost:8080
+@id = 2
+
+GET {{baseUrl}}/hello/{{id}}
+Accept: application/javascript
+Content-Type: application/json
+Authorization: Basic dXNlcjp1c2Vy
