@@ -31,5 +31,5 @@ tasks.named('test') {
 
 bootRun {
     jvmArgs=["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000"]
-    args = ["--spring.profiles.active=local"]
+    args = ["--spring.profiles.active=dev"]
 }
