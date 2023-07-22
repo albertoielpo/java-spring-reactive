@@ -26,7 +26,8 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority(this.authRole.getName()));
+        /** roles must be prefixed with ROLE_ due to spring security internal checks */
+        return Arrays.asList(new SimpleGrantedAuthority(String.format("ROLE_%s", this.authRole.getName())));
     }
 
     @Override
@@ -41,21 +42,25 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
+        /** useless for jwt flow */
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
+        /** useless for jwt flow */
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
+        /** useless for jwt flow */
         return true;
     }
 
     @Override
     public boolean isEnabled() {
+        /** useless for jwt flow */
         return true;
     }
 

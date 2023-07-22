@@ -1,24 +1,33 @@
 #
 @baseUrl=http://localhost:8080
 @id = 2
+@bearerUser= Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWJhdWRvIiwiaXNzIjoiamF2YS1zcHJpbmctcmVhY3RpdmUiLCJleHAiOjE2OTAwNDg5NTksImlhdCI6MTY5MDA0NTM1OX0.VSqyNh_e0_YHi1gvIbg5oTb-TwIyswAhGea5fII31Xw
+@bearerAdmin = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImphdmEtc3ByaW5nLXJlYWN0aXZlIiwiZXhwIjoxNjkwMDQ4ODY4LCJpYXQiOjE2OTAwNDUyNjh9.sz9PQNcyfjuQvGk3EnjGjN6UJqg-LhSUplE0B4R3DF0
 
 GET {{baseUrl}}/hello/{{id}}
-Accept: text/plain
+Accept: application/json
 Content-Type: application/json
-# user
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWJhdWRvIiwiaXNzIjoiamF2YS1zcHJpbmctcmVhY3RpdmUiLCJleHAiOjE2OTAwMzgyMTEsImlhdCI6MTY5MDAzNDYxMX0.fstL6wCyWpiR2jgXfyUyQQIb7z8n1XLheIX3Wy82s6Y
-# admin
-# Authorization: Basic YWRtaW46YWRtaW4=
+# sabaudo
+Authorization: {{bearerUser}}
 
 ###
-# public controller - no auth nedeed
+#
+###
+GET {{baseUrl}}/hello/admin/{{id}}
+Accept: application/json
+Content-Type: application/json
+# admin
+Authorization: {{bearerAdmin}}
+
+###
+# Public controller - no auth nedeed
 ###
 GET {{baseUrl}}/public/{{id}}
-Accept: text/plain
+Accept: application/json
 Content-Type: application/json
 
 ###
-# Token
+# Token generation
 ###
 POST {{baseUrl}}/token
 Accept: application/json

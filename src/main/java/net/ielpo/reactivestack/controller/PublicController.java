@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.ielpo.reactivestack.dto.BaseRes;
+import net.ielpo.reactivestack.factory.ResponseFactory;
 import reactor.core.publisher.Mono;
 
 /**
@@ -15,8 +17,8 @@ import reactor.core.publisher.Mono;
 public class PublicController {
 
     @GetMapping("/{id}")
-    public Mono<String> getById(@PathVariable Integer id) {
-        return Mono.just(String.format("This is a public controller - id param: %s", id));
+    public Mono<BaseRes<String>> getById(@PathVariable Integer id) {
+        return ResponseFactory.build(String.format("This is a public controller - id param: %s", id));
     }
 
 }

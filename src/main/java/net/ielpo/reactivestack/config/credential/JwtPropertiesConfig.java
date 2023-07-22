@@ -3,6 +3,9 @@ package net.ielpo.reactivestack.config.credential;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Alberto Ielpo
+ */
 @Component
 public class JwtPropertiesConfig {
 

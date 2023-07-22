@@ -15,6 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 
 import net.ielpo.reactivestack.config.Const;
+import net.ielpo.reactivestack.exception.UnauthorizedRequestException;
 import net.ielpo.reactivestack.manager.JwtTokenManager;
 import reactor.core.publisher.Mono;
 
@@ -48,11 +49,17 @@ public class JwtTokenAuthConverter implements ServerAuthenticationConverter {
                                         new PreAuthenticatedAuthenticationToken(username, Const.USELESS));
                             }
                         }
+                        /**
+                         * if authorization header with bearer token is passed and it's not valid..
+                         * throw exception
+                         */
+                        throw new UnauthorizedRequestException("Unauthorized");
                     }
                 }
             }
         }
 
+        /** return an empty payload because the route could be public */
         return Mono.empty();
     }
 }

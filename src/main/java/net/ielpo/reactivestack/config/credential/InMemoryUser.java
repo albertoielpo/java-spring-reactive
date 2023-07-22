@@ -26,7 +26,7 @@ public class InMemoryUser {
         return allowedAdminMap;
     }
 
-    public boolean isAnyAllowed(String username, String password) {
+    public boolean isValid(String username, String password) {
         if (username == null || password == null) {
             return false;
         }

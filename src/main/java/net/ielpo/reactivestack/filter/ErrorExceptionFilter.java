@@ -1,8 +1,5 @@
 package net.ielpo.reactivestack.filter;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.boot.autoconfigure.web.WebProperties.Resources;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
@@ -19,6 +16,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+import net.ielpo.reactivestack.dto.BaseErr;
 import net.ielpo.reactivestack.exception.FluxException;
 import reactor.core.publisher.Mono;
 
@@ -47,17 +45,9 @@ public class ErrorExceptionFilter extends AbstractErrorWebExceptionHandler {
         HttpStatus httpStatus = (error instanceof FluxException) ? ((FluxException) error).getHttpStatus()
                 : HttpStatus.INTERNAL_SERVER_ERROR;
 
-        Map<String, Object> errorPropertiesMap = new HashMap<>() {
-            {
-                this.put("status", "ERROR");
-                this.put("details", error.getMessage());
-                this.put("timestamp", System.currentTimeMillis());
-            }
-        };
-
         return ServerResponse
                 .status(httpStatus)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(errorPropertiesMap));
+                .body(BodyInserters.fromValue(new BaseErr(error.getMessage())));
     }
 }

@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
 import net.ielpo.reactivestack.config.credential.InMemoryUser;
+import net.ielpo.reactivestack.dto.BaseRes;
 import net.ielpo.reactivestack.dto.TokenReq;
 import net.ielpo.reactivestack.dto.TokenRes;
 import net.ielpo.reactivestack.exception.BadRequestException;
 import net.ielpo.reactivestack.exception.UnauthorizedRequestException;
+import net.ielpo.reactivestack.factory.ResponseFactory;
 import net.ielpo.reactivestack.manager.JwtTokenManager;
 import reactor.core.publisher.Mono;
 
@@ -38,19 +40,20 @@ public class TokenController {
      * @return
      */
     @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<TokenRes> renew(@RequestBody TokenReq request) {
+    public Mono<BaseRes<TokenRes>> renew(@RequestBody TokenReq request) {
         if (request == null || !StringUtils.hasText(request.name) || !StringUtils.hasText(request.secret)) {
             throw new BadRequestException("Invalid parameters");
         }
 
-        if (!inMemoryUser.isAnyAllowed(request.name, request.secret)) {
+        if (!inMemoryUser.isValid(request.name, request.secret)) {
             throw new UnauthorizedRequestException("Bad credentials");
         }
 
         String token = jwtTokenManager.createToken(request.name);
         DecodedJWT decoded = jwtTokenManager.decode(token);
 
-        return Mono.just(new TokenRes(decoded.getSubject(), token, decoded.getExpiresAt().getTime()));
+        return ResponseFactory.build(new TokenRes(decoded.getSubject(), token, decoded.getExpiresAt().getTime()));
+
     }
 
 }
