@@ -24,6 +24,7 @@ public class JwtTokenManager {
     private JwtPropertiesConfig jwtPropertiesConfig;
 
     /**
+     * Create a token
      * 
      * @param username
      * @return
@@ -45,6 +46,7 @@ public class JwtTokenManager {
     }
 
     /**
+     * Decode the token
      * 
      * @param token
      * @return
@@ -58,6 +60,7 @@ public class JwtTokenManager {
     }
 
     /**
+     * Extract the username
      * 
      * @param token
      * @return
@@ -72,6 +75,7 @@ public class JwtTokenManager {
     }
 
     /**
+     * Check the token validity (verify + expiry date)
      * 
      * @param token
      * @return
@@ -88,6 +92,7 @@ public class JwtTokenManager {
     }
 
     /**
+     * Given a token and userDetails check the validity
      * 
      * @param token
      * @param userDetails
@@ -97,6 +102,13 @@ public class JwtTokenManager {
         return isValid(token, userDetails.getUsername());
     }
 
+    /**
+     * Given a token and an username check the validity
+     * 
+     * @param token
+     * @param username
+     * @return
+     */
     public boolean isValid(String token, String username) {
         if (isValidToken(token)) {
             return username.equals(extractUsername(token));

@@ -1,5 +1,6 @@
 package net.ielpo.reactivestack.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,14 +23,14 @@ public class HelloController {
     // || hasRole(T(net.ielpo.reactivestack.config.AuthRole).ADMIN.getName())")
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<BaseRes<String>> getById(@PathVariable Integer id) {
         return ResponseFactory.build(String.format("The id is %s", id));
 
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/admin/{id}")
+    @GetMapping(path = "/admin/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<BaseRes<String>> getByAdminId(@PathVariable Integer id) {
         return ResponseFactory.build(String.format("Admin route: The id is %s", id));
     }
