@@ -6,7 +6,7 @@ GET {{baseUrl}}/hello/{{id}}
 Accept: text/plain
 Content-Type: application/json
 # user
-Authorization: Basic dXNlcjp1c2Vy
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWJhdWRvIiwiaXNzIjoiamF2YS1zcHJpbmctcmVhY3RpdmUiLCJleHAiOjE2OTAwMzgyMTEsImlhdCI6MTY5MDAzNDYxMX0.fstL6wCyWpiR2jgXfyUyQQIb7z8n1XLheIX3Wy82s6Y
 # admin
 # Authorization: Basic YWRtaW46YWRtaW4=
 
@@ -16,3 +16,15 @@ Authorization: Basic dXNlcjp1c2Vy
 GET {{baseUrl}}/public/{{id}}
 Accept: text/plain
 Content-Type: application/json
+
+###
+# Token
+###
+POST {{baseUrl}}/token
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "sabaudo",
+    "secret": "2345678901"
+}

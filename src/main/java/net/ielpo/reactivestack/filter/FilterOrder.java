@@ -12,6 +12,6 @@ public class FilterOrder {
     /** Order -2 is required to force this filter as default */
     public final static int ERROR_EXCEPTION = -2;
 
-    // public final static int AUTHENTICATION = 10;
+    public final static int AUTHENTICATION = 10;
 
 }
