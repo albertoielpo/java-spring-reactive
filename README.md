@@ -12,3 +12,6 @@ The idea is to implement a simple project using the reactive stack including:
 
 ## Start
 ./gradlew bootRun
+
+## Test
+./gradlew test
