@@ -11,7 +11,15 @@ The idea is to implement a simple project using the reactive stack including:
 - Spring Data Reactive Repositories
 
 ## Start
-./gradlew bootRun
+`./gradlew bootRun`
 
 ## Test
-./gradlew test
+`./gradlew test` it launches all classes annotated with `@SpringBootTest` and its `@Test` methods
+
+## Release
+- change version inside `build.gradle` 
+- `./gradlew build` (launch automatically tests)
+- `java -jar build/libs/reactivestack-version.jar --spring.profiles.active=prod`
+
+## Docker
+TODO

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'net.ielpo'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 
 java {
 	sourceCompatibility = '17'
@@ -34,5 +34,5 @@ tasks.named('test') {
 
 bootRun {
     jvmArgs=["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000"]
-    args = ["--spring.profiles.active=dev"]
+    args = ["--spring.profiles.active=prod"]
 }
