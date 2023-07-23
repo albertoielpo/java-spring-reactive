@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import net.ielpo.reactivestack.dto.BaseRes;
-import reactor.core.publisher.Mono;
+import net.ielpo.reactivestack.utils.TestUtils;
 
 /**
  * @author Alberto Ielpo
@@ -20,11 +20,9 @@ public class PublicControllerTest {
     @Test
     void testGetById() {
         Assert.notNull(publicController, "public controller must be defined");
-        Integer id = 1;
+        Integer id = TestUtils.anyNumber(5);
         String expectedResult = String.format("This is a public controller - id param: %s", id);
-        Mono<BaseRes<String>> res = publicController.getById(id);
-
-        BaseRes<String> unwrap = res.block(); // only for test
+        BaseRes<String> unwrap = TestUtils.unwrap(publicController.getById(id));
         Assert.isTrue(unwrap.data.equals(expectedResult), "result must be the expected");
 
     }

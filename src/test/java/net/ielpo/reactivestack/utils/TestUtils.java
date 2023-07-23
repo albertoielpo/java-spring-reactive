@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 public class TestUtils {
 
     /**
-     * Unwrap a mono to the original type blocking the event loop
+     * Unwrap a mono blocking the event loop. Test only!
      * 
      * @param <T>
      * @param mono
