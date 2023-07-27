@@ -16,10 +16,7 @@ The idea is to implement a simple project using the reactive stack including:
 ## Test
 `./gradlew test` it launches all classes annotated with `@SpringBootTest` and its `@Test` methods
 
-## Release
-- change version inside `build.gradle` 
-- `./gradlew build` (launch automatically tests)
-- `java -jar build/libs/reactivestack-version.jar --spring.profiles.active=prod`
+## Release Docker
+`./release.sh` it creates the build and launch the docker environment
 
-## Docker
-docker run --name java-spring-reactive-mongo -d mongo:tag
+Note: requires `docker compose` not `docker-compose`. Change properly the `release.sh` script in case your base system does not support it.

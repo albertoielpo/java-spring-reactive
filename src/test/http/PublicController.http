@@ -1,0 +1,8 @@
+@baseUrl=http://localhost:8080
+@id=1
+###
+# Public controller - no auth nedeed
+###
+GET {{baseUrl}}/public/{{id}}
+Accept: application/json
+Content-Type: application/json

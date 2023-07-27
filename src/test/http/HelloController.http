@@ -4,17 +4,6 @@
 @bearerUser= Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhLXNwcmluZy1yZWFjdGl2ZSIsImV4cCI6MTY5MDA2MzQyNSwiaWF0IjoxNjkwMDU5ODI1LCJzdWIiOiJ0aXRvIn0.rSUJXR8yM0QBjOkpl3d14fZtrhHF-59JNiStJnybXZI
 @bearerAdmin = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhLXNwcmluZy1yZWFjdGl2ZS1kZXYiLCJleHAiOjE2OTA0Nzc4MTQsImlhdCI6MTY5MDQ3NDIxNCwic3ViIjoiYWRtaW4ifQ.fk5gM6Hh2HjNarc8sPh0rFwkuxBs4YgT_px7yODVtJQ
 
-###
-# Token generation
-###
-POST {{baseUrl}}/token
-Accept: application/json
-Content-Type: application/json
-
-{
-    "name": "admin",
-    "secret": "admin"
-}
 
 ###
 # Hello controller
@@ -29,22 +18,6 @@ Authorization: {{bearerUser}}
 # Hello controller - admin role
 ###
 GET {{baseUrl}}/hello/admin/{{id}}
-Accept: application/json
-Content-Type: application/json
-Authorization: {{bearerAdmin}}
-
-###
-# Public controller - no auth nedeed
-###
-GET {{baseUrl}}/public/{{id}}
-Accept: application/json
-Content-Type: application/json
-
-
-###
-# Access log - read from database
-###
-GET {{baseUrl}}/access-log
 Accept: application/json
 Content-Type: application/json
 Authorization: {{bearerAdmin}}

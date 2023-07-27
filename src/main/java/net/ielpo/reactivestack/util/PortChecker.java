@@ -33,7 +33,7 @@ public class PortChecker {
             if (s != null) {
                 try {
                     s.close();
-                    logger.info("Connection released %s:%s", host, port);
+                    logger.info(String.format("Connection released %s:%s", host, port));
                 } catch (IOException e) {
                     throw new RuntimeException("Cannot close socket!", e);
                 }
