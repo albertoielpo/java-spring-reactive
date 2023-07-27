@@ -1,4 +1,4 @@
-package net.ielpo.reactivestack.utils;
+package net.ielpo.reactivestack.util;
 
 import org.springframework.util.Assert;
 

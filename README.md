@@ -22,4 +22,4 @@ The idea is to implement a simple project using the reactive stack including:
 - `java -jar build/libs/reactivestack-version.jar --spring.profiles.active=prod`
 
 ## Docker
-TODO
+docker run --name java-spring-reactive-mongo -d mongo:tag

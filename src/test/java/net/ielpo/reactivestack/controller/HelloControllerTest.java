@@ -7,7 +7,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.util.Assert;
 
 import net.ielpo.reactivestack.dto.BaseRes;
-import net.ielpo.reactivestack.utils.TestUtils;
+import net.ielpo.reactivestack.util.TestUtils;
 
 /**
  * @author Alberto Ielpo

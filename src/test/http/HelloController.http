@@ -2,7 +2,7 @@
 @baseUrl=http://localhost:8080
 @id = 15
 @bearerUser= Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhLXNwcmluZy1yZWFjdGl2ZSIsImV4cCI6MTY5MDA2MzQyNSwiaWF0IjoxNjkwMDU5ODI1LCJzdWIiOiJ0aXRvIn0.rSUJXR8yM0QBjOkpl3d14fZtrhHF-59JNiStJnybXZI
-@bearerAdmin = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImphdmEtc3ByaW5nLXJlYWN0aXZlIiwiZXhwIjoxNjkwMDQ4ODY4LCJpYXQiOjE2OTAwNDUyNjh9.sz9PQNcyfjuQvGk3EnjGjN6UJqg-LhSUplE0B4R3DF0
+@bearerAdmin = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhLXNwcmluZy1yZWFjdGl2ZS1kZXYiLCJleHAiOjE2OTA0Nzc4MTQsImlhdCI6MTY5MDQ3NDIxNCwic3ViIjoiYWRtaW4ifQ.fk5gM6Hh2HjNarc8sPh0rFwkuxBs4YgT_px7yODVtJQ
 
 ###
 # Token generation
@@ -12,8 +12,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "name": "tito",
-    "secret": "tito"
+    "name": "admin",
+    "secret": "admin"
 }
 
 ###
@@ -39,3 +39,12 @@ Authorization: {{bearerAdmin}}
 GET {{baseUrl}}/public/{{id}}
 Accept: application/json
 Content-Type: application/json
+
+
+###
+# Access log - read from database
+###
+GET {{baseUrl}}/access-log
+Accept: application/json
+Content-Type: application/json
+Authorization: {{bearerAdmin}}

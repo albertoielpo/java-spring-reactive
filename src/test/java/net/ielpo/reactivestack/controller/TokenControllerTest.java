@@ -14,7 +14,7 @@ import net.ielpo.reactivestack.dto.TokenReq;
 import net.ielpo.reactivestack.dto.TokenRes;
 import net.ielpo.reactivestack.exception.UnauthorizedRequestException;
 import net.ielpo.reactivestack.manager.JwtTokenManager;
-import net.ielpo.reactivestack.utils.TestUtils;
+import net.ielpo.reactivestack.util.TestUtils;
 
 /**
  * @author Alberto Ielpo

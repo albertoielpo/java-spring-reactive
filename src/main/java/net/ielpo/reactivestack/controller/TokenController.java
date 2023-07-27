@@ -12,6 +12,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import net.ielpo.reactivestack.config.Const;
 import net.ielpo.reactivestack.config.credential.InMemoryUser;
+import net.ielpo.reactivestack.dao.AccessLog;
 import net.ielpo.reactivestack.dto.BaseRes;
 import net.ielpo.reactivestack.dto.TokenReq;
 import net.ielpo.reactivestack.dto.TokenRes;
@@ -19,6 +20,7 @@ import net.ielpo.reactivestack.exception.BadRequestException;
 import net.ielpo.reactivestack.exception.UnauthorizedRequestException;
 import net.ielpo.reactivestack.factory.ResponseFactory;
 import net.ielpo.reactivestack.manager.JwtTokenManager;
+import net.ielpo.reactivestack.service.AccessLogService;
 import reactor.core.publisher.Mono;
 
 /**
@@ -33,6 +35,9 @@ public class TokenController {
 
     @Autowired
     private JwtTokenManager jwtTokenManager;
+
+    @Autowired
+    private AccessLogService accessLogService;
 
     /**
      * This method create a valid jwt token given application name and secret key
@@ -53,7 +58,14 @@ public class TokenController {
         String token = jwtTokenManager.createToken(request.name);
         DecodedJWT decoded = jwtTokenManager.decode(token);
 
-        return ResponseFactory.build(new TokenRes(decoded.getSubject(), token, decoded.getExpiresAt().getTime()));
+        Mono<AccessLog> dataSaved = accessLogService
+                .save(new AccessLog(String.format("The user %s generate a new token", request.name)));
+
+        Mono<BaseRes<TokenRes>> tokenResponse = ResponseFactory
+                .build(new TokenRes(decoded.getSubject(), token, decoded.getExpiresAt().getTime()));
+
+        /** merge all mono and return */
+        return Mono.zip(dataSaved, tokenResponse).map(tuple -> tuple.getT2());
 
     }
 
