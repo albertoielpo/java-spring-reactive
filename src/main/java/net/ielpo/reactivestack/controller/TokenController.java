@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 
+import net.ielpo.reactivestack.config.Const;
 import net.ielpo.reactivestack.config.credential.InMemoryUser;
 import net.ielpo.reactivestack.dto.BaseRes;
 import net.ielpo.reactivestack.dto.TokenReq;
@@ -42,11 +43,11 @@ public class TokenController {
     @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<BaseRes<TokenRes>> renew(@RequestBody TokenReq request) {
         if (request == null || !StringUtils.hasText(request.name) || !StringUtils.hasText(request.secret)) {
-            throw new BadRequestException("Invalid parameters");
+            throw new BadRequestException(Const.INVALID_PARAMETERS);
         }
 
         if (!inMemoryUser.isValid(request.name, request.secret)) {
-            throw new UnauthorizedRequestException("Bad credentials");
+            throw new UnauthorizedRequestException(Const.BAD_CREDENTIALS);
         }
 
         String token = jwtTokenManager.createToken(request.name);

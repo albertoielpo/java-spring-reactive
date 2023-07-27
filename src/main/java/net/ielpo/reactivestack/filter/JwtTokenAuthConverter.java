@@ -53,7 +53,7 @@ public class JwtTokenAuthConverter implements ServerAuthenticationConverter {
                          * if authorization header with bearer token is passed and it's not valid..
                          * throw exception
                          */
-                        throw new UnauthorizedRequestException("Unauthorized");
+                        throw new UnauthorizedRequestException(Const.UNAUTHORIZED);
                     }
                 }
             }

@@ -35,7 +35,7 @@ public class UserDetailsServiceImpl implements ReactiveUserDetailsService {
             return Mono.just(new UserDetailsImpl(username, useless, AuthRole.ADMIN));
         }
 
-        throw new ForbiddenRequestException("Access forbidden!");
+        throw new ForbiddenRequestException(Const.ACCESS_FORBIDDEN);
     }
 
 }
