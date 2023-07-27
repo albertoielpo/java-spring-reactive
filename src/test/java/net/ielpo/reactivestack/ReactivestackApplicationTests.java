@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author Alberto Ielpo
  */
 @SpringBootTest
-class ReactivestackApplicationTests {
+public class ReactivestackApplicationTests {
 
     @Test
     void contextLoads() {
