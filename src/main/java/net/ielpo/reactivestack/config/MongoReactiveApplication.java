@@ -21,8 +21,8 @@ import net.ielpo.reactivestack.util.PortChecker;
 @Configuration
 public class MongoReactiveApplication extends AbstractReactiveMongoConfiguration {
 
-    @Value("${mongodb.enabled}")
-    private boolean mongodbEnabled;
+    @Value("${mongodb.connection.required}")
+    private boolean mongodbConnectionRequired;
 
     @Value("${mongodb.host}")
     private String mongodbHost;
@@ -51,8 +51,8 @@ public class MongoReactiveApplication extends AbstractReactiveMongoConfiguration
 
     @Bean
     public void mongoDBChecker() {
-        if (!mongodbEnabled) {
-            /* there is no mongodb real connection... */
+        if (!mongodbConnectionRequired) {
+            /** mongodb connection is not strictly required for the startup */
             return;
         }
         /* a mongodb connection is requried.. check if the DB is up and running */

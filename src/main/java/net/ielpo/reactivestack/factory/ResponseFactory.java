@@ -28,9 +28,9 @@ public class ResponseFactory {
      */
     public static <T> Mono<BaseRes<T>> build(Mono<T> payload) {
         return Mono.just(new BaseRes<T>()).zipWith(payload).map(tuple -> {
-            var tmp = tuple.getT1();
-            tmp.data = tuple.getT2();
-            return tmp;
+            var baseRes = tuple.getT1();
+            baseRes.data = tuple.getT2();
+            return baseRes;
         });
     }
 

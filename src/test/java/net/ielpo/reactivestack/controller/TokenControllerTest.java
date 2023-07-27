@@ -3,6 +3,11 @@ package net.ielpo.reactivestack.controller;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +15,28 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import net.ielpo.reactivestack.config.Const;
+import net.ielpo.reactivestack.dao.AccessLog;
 import net.ielpo.reactivestack.dto.TokenReq;
 import net.ielpo.reactivestack.dto.TokenRes;
 import net.ielpo.reactivestack.exception.UnauthorizedRequestException;
 import net.ielpo.reactivestack.manager.JwtTokenManager;
+import net.ielpo.reactivestack.service.AccessLogService;
 import net.ielpo.reactivestack.util.TestUtils;
+import reactor.core.publisher.Mono;
 
 /**
  * @author Alberto Ielpo
  */
 @SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class TokenControllerTest {
 
     private Logger logger = LoggerFactory.getLogger(TokenControllerTest.class);
 
+    @Mock
+    private AccessLogService accessLogService;
+
+    @InjectMocks
     @Autowired
     private TokenController tokenController;
 
@@ -53,10 +66,10 @@ public class TokenControllerTest {
 
     }
 
-    // TODO: mock database
-    // @Test
+    @Test
     void testRenew() {
 
+        Mockito.when(accessLogService.save(Mockito.any())).thenReturn(Mono.just(new AccessLog("test")));
         Assert.notNull(tokenController, "token controller must be defined");
 
         TokenReq tokenReq = new TokenReq() {
