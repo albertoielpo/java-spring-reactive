@@ -3,7 +3,8 @@ The idea is to implement a simple project using the reactive stack including:
 - Rest controller with mono (async promise like event loop)
 - Jwt token auth using spring-security
 - Authorize route using @PreAuthorize("hasRole")
-- TODO
+- MongoDB integration
+- Docker release
 
 ## Java spring reactive stack
 - Spring Security Reactive
