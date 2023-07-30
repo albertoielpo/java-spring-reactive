@@ -58,7 +58,7 @@ public class ReactiveRedisConfiguration {
             /** redis connection is not strictly required for the startup */
             return;
         }
-        /* a mongodb connection is requried.. check if the DB is up and running */
+        /* a redis connection is requried.. check if redis is up and running */
         Assert.isTrue(PortChecker.isConnectionPossible(redisConnectionHost, redisConnectionPort),
                 "Redis must be up and running");
     }

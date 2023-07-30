@@ -8,6 +8,10 @@ import reactor.core.publisher.Mono;
  */
 public class ResponseFactory {
 
+    public static <T> Mono<BaseRes<T>> build() {
+        return Mono.just(new BaseRes<T>());
+    }
+
     /**
      * Return a Mono<BaseRes> from a T payload
      * 

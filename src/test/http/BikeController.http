@@ -5,16 +5,21 @@
 ###
 # Access log - read from database
 ###
-GET {{baseUrl}}/cache/save/3
+POST {{baseUrl}}/bike
 Accept: application/json
 Content-Type: application/json
 Authorization: {{bearerAdmin}}
+
+{
+    "name": "carrera",
+    "price": 1659.25
+}
 
 
 ###
 # Access log - read from database
 ###
-GET {{baseUrl}}/cache/1
+GET {{baseUrl}}/bike/5aca6b1a-ad36-469b-8327-1eb689eebf0d
 Accept: application/json
 Content-Type: application/json
 Authorization: {{bearerAdmin}}
