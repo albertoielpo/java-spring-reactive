@@ -1,12 +1,11 @@
 package net.ielpo.reactivestack.dto;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 
 /**
  * @author Alberto Ielpo
+ *         TODO: remove it
  */
-@RedisHash(timeToLive = 60)
 public class TestDto {
 
     @Id

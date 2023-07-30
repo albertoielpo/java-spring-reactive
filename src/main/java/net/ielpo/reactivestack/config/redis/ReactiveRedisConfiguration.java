@@ -1,4 +1,4 @@
-package net.ielpo.reactivestack.config;
+package net.ielpo.reactivestack.config.redis;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -62,4 +62,5 @@ public class ReactiveRedisConfiguration {
         Assert.isTrue(PortChecker.isConnectionPossible(redisConnectionHost, redisConnectionPort),
                 "Redis must be up and running");
     }
+
 }

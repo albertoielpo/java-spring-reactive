@@ -5,7 +5,7 @@
 ###
 # Access log - read from database
 ###
-GET {{baseUrl}}/cache/save/5
+GET {{baseUrl}}/cache/save/3
 Accept: application/json
 Content-Type: application/json
 Authorization: {{bearerAdmin}}
@@ -14,7 +14,7 @@ Authorization: {{bearerAdmin}}
 ###
 # Access log - read from database
 ###
-GET {{baseUrl}}/cache/50
+GET {{baseUrl}}/cache/1
 Accept: application/json
 Content-Type: application/json
 Authorization: {{bearerAdmin}}
