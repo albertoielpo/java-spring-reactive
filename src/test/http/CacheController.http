@@ -1,0 +1,20 @@
+#
+@baseUrl=http://localhost:8080
+@bearerAdmin = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhLXNwcmluZy1yZWFjdGl2ZS1kZXYiLCJleHAiOjE2OTExMDA0MTgsImlhdCI6MTY5MDc0MDQxOCwic3ViIjoiYWRtaW4ifQ.DaExTyKu_2Zbam8KRaQ4gjBjann-V4uYbkx2-ofU0aE
+
+###
+# Access log - read from database
+###
+GET {{baseUrl}}/cache/save/5
+Accept: application/json
+Content-Type: application/json
+Authorization: {{bearerAdmin}}
+
+
+###
+# Access log - read from database
+###
+GET {{baseUrl}}/cache/50
+Accept: application/json
+Content-Type: application/json
+Authorization: {{bearerAdmin}}

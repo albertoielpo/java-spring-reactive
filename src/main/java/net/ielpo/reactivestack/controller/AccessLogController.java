@@ -28,8 +28,8 @@ public class AccessLogController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<BaseRes<List<AccessLog>>> getAll() {
-
-        Mono<List<AccessLog>> accessLogs = accessLogService.findAll().collectList(); // collect flux
+        // collect flux
+        Mono<List<AccessLog>> accessLogs = accessLogService.findAll().collectList();
         return ResponseFactory.build(accessLogs);
 
     }

@@ -1,6 +1,6 @@
 #
 @baseUrl=http://localhost:8080
-@bearerAdmin = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhLXNwcmluZy1yZWFjdGl2ZSIsImV4cCI6MTY5MDUwMjk3NSwiaWF0IjoxNjkwNDk5Mzc1LCJzdWIiOiJhZG1pbiJ9.tt8ORmr1pEGPWkmNnxBEcXIPj7seXXNHmdrgPbcq1DE
+@bearerAdmin = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhLXNwcmluZy1yZWFjdGl2ZS1kZXYiLCJleHAiOjE2OTA3MDcyNTEsImlhdCI6MTY5MDcwMzY1MSwic3ViIjoiYWRtaW4ifQ.HdELSVKTsY1TCyCdg-Ut5m7WKgKeGhbDCP4HhvIqUEQ
 
 ###
 # Access log - read from database

@@ -13,3 +13,15 @@ Content-Type: application/json
     "name": "admin",
     "secret": "af6a87bfbabe6ad209c8"
 }
+
+###
+# Token generation dev
+###
+POST {{baseUrl}}/token
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "secret": "admin"
+}
